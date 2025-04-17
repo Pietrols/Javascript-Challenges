@@ -1,52 +1,38 @@
-const users = [
-  "Alice",
-  "Bob",
-  "Charlie",
-  "David",
-  "Eve",
-  "Frank",
-  "Grace",
-  "Hannah",
+const colors = [
+  "tomato",
+  "skyblue",
+  "lightgreen",
+  "gold",
+  "plum",
+  "salmon",
+  "teal",
 ];
 
 const container = document.querySelector(".container");
+// Title
+const title = document.createElement("h1");
+title.textContent = "Background Color Flipper";
+container.appendChild(title);
+// Paragraph with span
+const para = document.createElement("p");
+para.textContent = "Current Color: ";
+const colorSpan = document.createElement("span");
+colorSpan.id = "color-name";
+colorSpan.textContent = "white";
+para.appendChild(colorSpan);
+container.appendChild(para);
+// Button
+const button = document.createElement("button");
+button.id = "change-color";
+button.textContent = "Change Background";
+container.appendChild(button);
 
-const input = document.createElement("input");
-input.setAttribute("type", "text");
-input.setAttribute("placeholder", "Filter users...");
-input.id = "filter-input";
-container.appendChild(input);
-
-const userList = document.createElement("div");
-userList.id = "user-list";
-container.appendChild(userList);
-
-const noResult = document.createElement("p");
-noResult.id = "no-products";
-noResult.setAttribute("class", "hidden");
-noResult.textContent = "No users found.";
-container.appendChild(noResult);
-
-// Render all users
-function renderUsers(userArray) {
-  userList.innerHTML = "";
-  userArray.forEach((user) => {
-    const li = document.createElement("li");
-    li.textContent = user;
-    userList.appendChild(li);
-  });
-}
-
-renderUsers(users);
-
-input.addEventListener("input", () => {
-  const searchTerm = input.value.toLowerCase();
-  const filtered = users.filter((user) =>
-    user.toLowerCase().includes(searchTerm)
-  );
-  renderUsers(filtered);
-  if (filtered.length === 0) noResult.style.display = "block";
-  else {
-    noResult.style.display = "none";
+button.addEventListener("click", () => {
+  function getRandomColor(arr) {
+    const index = Math.floor(Math.random() * arr.length);
+    return arr[index];
   }
+  const randomColor = getRandomColor(colors);
+  document.body.style.backgroundColor = randomColor;
+  colorSpan.textContent = randomColor;
 });
