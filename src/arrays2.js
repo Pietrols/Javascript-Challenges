@@ -25,7 +25,7 @@ const shortWords = input5.filter((word) => {
 });
 console.log(shortWords);
 
-//Challenge 07: Get Even Numbers
+//Challenge 06: Make first letter capital
 const words = ["hello", "world", "javascript", "rocks"];
 const caps = words.map((word) => {
   return word.charAt(0).toUpperCase() + word.slice(1);
