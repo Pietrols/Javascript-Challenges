@@ -72,7 +72,6 @@ form.addEventListener("submit", (e) => {
   description.textContent = "Description: ";
 
   if (!weatherInput) {
-    Y;
     message.textContent = "❌ Please enter a City.";
     return;
   }
